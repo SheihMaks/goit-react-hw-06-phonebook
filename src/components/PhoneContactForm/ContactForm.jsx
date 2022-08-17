@@ -1,20 +1,13 @@
 import {useState} from "react"
 import { nanoid } from "nanoid";
-import { ContactFormContainer,Button,Form,LabelOfInputName,Input, LabelOfInputPhone } from "./ContactForm.styled"
-import { setName,setNumber } from "components/Redux/store";
-import { useDispatch,useSelector } from "react-redux";
+import { ContactFormContainer,Button,Form,LabelOfInputName,Input, LabelOfInputPhone } from "./ContactForm.styled";
 export const ContactForm =({onSubmit})=>{
-  // const dispatch=useDispatch();
-  // const name=useSelector(state=>state.name)
-  // const number=useSelector(state=>state.number)
   const [name,setName]=useState('');
   const [number,setNumber]=useState('');
+const inputNameId=nanoid();
+const inputNumberId=nanoid();
 
- const inputNameId=nanoid();
- const inputNumberId=nanoid();
-
-
- const onHandleInput=(e)=>{
+const onHandleInput=(e)=>{
   const {name,value}=e.currentTarget
     switch (name){
       case 'name': setName(value)
@@ -37,14 +30,14 @@ export const ContactForm =({onSubmit})=>{
 
 return(<ContactFormContainer><Form onSubmit={onHandleSubmit}><LabelOfInputName htmlFor={inputNameId}>Name</LabelOfInputName>
     <Input
-   type="text"
-   name="name"
-   value={name}
-   onChange={onHandleInput}
-   id={inputNameId}
-   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-   required
+  type="text"
+  name="name"
+  value={name}
+  onChange={onHandleInput}
+  id={inputNameId}
+  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+  required
 />
 <LabelOfInputPhone htmlFor={inputNumberId}>Number</LabelOfInputPhone>
 <Input
