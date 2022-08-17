@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
+import { useDispatch,useSelector } from 'react-redux';
 import { LabelFilter } from "./Filter.styled"
-import { Input } from "../PhoneContactForm/ContactForm.styled"
+import { Input } from "../PhoneContactForm/ContactForm.styled";
+import { setFilter } from 'components/Redux/store';
+export const Filter=({title,id})=>{
+    const dispatch=useDispatch()
+    const filter=useSelector(state=>state.filter)
 
-export const Filter=({title,onUserFilter,filterName,id})=>{
     return (<><LabelFilter htmlFor={id}>{title}</LabelFilter>
     <Input
     type='text' 
     name='filter' 
-    onChange={onUserFilter} 
-    value={filterName}
+    onChange={(e)=>dispatch(setFilter(e.currentTarget.value))} 
+    value={filter}
     id={id}
     /></>)}
 
     Filter.propTypes={
         title:PropTypes.string.isRequired,
-        onUserFilter:PropTypes.func.isRequired,
-        filterName:PropTypes.string.isRequired,
         id:PropTypes.string.isRequired
     }

@@ -1,9 +1,12 @@
 import {useState} from "react"
 import { nanoid } from "nanoid";
 import { ContactFormContainer,Button,Form,LabelOfInputName,Input, LabelOfInputPhone } from "./ContactForm.styled"
-
+import { setName,setNumber } from "components/Redux/store";
+import { useDispatch,useSelector } from "react-redux";
 export const ContactForm =({onSubmit})=>{
-  
+  // const dispatch=useDispatch();
+  // const name=useSelector(state=>state.name)
+  // const number=useSelector(state=>state.number)
   const [name,setName]=useState('');
   const [number,setNumber]=useState('');
 
@@ -28,8 +31,8 @@ export const ContactForm =({onSubmit})=>{
   }
 
   const reset=()=>{
-    setName('');
-  setNumber('');
+    setName('')
+    setNumber('')
 }
 
 return(<ContactFormContainer><Form onSubmit={onHandleSubmit}><LabelOfInputName htmlFor={inputNameId}>Name</LabelOfInputName>
