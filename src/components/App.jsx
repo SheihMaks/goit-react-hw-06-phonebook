@@ -1,5 +1,4 @@
 import React from "react";
-// import {useState,useEffect} from "react";
 import {PhonebookApp, HeaderApp, HeaderSectionContacts} from './Apps.styled'
 import { ContactForm } from "./PhoneContactForm/ContactForm";
 import {Contacts} from './Contacts/Contacts';
@@ -7,19 +6,12 @@ import { Filter } from "./UserFilter/Filter";
 import { nanoid } from "nanoid";
 import { useSelector,useDispatch } from "react-redux";
 import {setContacts} from './Redux/sliceContacts';
-
+import { getContacts, getFilter } from "./Redux/sliceContacts";
 export const App=()=>{
   const dispatch=useDispatch()
-  const contacts=useSelector(state=>state.contacts.items)
-  const onFilter=useSelector(state=>state.contacts.filter)
+  const contacts=useSelector(getContacts)
+  const onFilter=useSelector(getFilter)
   const filterId=nanoid();
-
-//  const [contacts,setContacts]=useState(()=>{
-//   return JSON.parse(localStorage.getItem('contacts')) ?? []});
-
-//  useEffect(()=>{
-//   localStorage.setItem("contacts",JSON.stringify(contacts))
-// },[contacts])
 
 const formHandleSubmit=(data) => {
   data={
@@ -34,7 +26,6 @@ const formHandleSubmit=(data) => {
  myContacts()
   }
 }
-
 
 const getContactsFiltered=()=>{
   const normalizedFilterName=onFilter.toLowerCase()
@@ -57,5 +48,4 @@ const getContactsFiltered=()=>{
       contactsList={contactsList}
       />
     </PhonebookApp>)
-  
-}
+  }

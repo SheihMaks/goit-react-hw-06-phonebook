@@ -28,3 +28,8 @@ const persistConfig = {
 }
 
 export const persistSliceContacts=persistReducer(persistConfig,sliceContacts.reducer)
+
+//Selectors
+
+export const getContacts=state=>state.contacts.items;
+export const getFilter=state=>state.contacts.filter;
