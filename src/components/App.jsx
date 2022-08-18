@@ -6,7 +6,7 @@ import {Contacts} from './Contacts/Contacts';
 import { Filter } from "./UserFilter/Filter";
 import { nanoid } from "nanoid";
 import { useSelector,useDispatch } from "react-redux";
-import {setContacts} from './Redux/store';
+import {setContacts} from './Redux/sliceContacts';
 
 export const App=()=>{
   const dispatch=useDispatch()
