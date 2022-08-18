@@ -7,14 +7,14 @@ import { getFilter } from 'components/Redux/sliceContacts';
 
 export const Filter=({title,id})=>{
     const dispatch=useDispatch()
-    const filter=useSelector(getFilter)
+    const onFilter=useSelector(getFilter)
 
     return (<><LabelFilter htmlFor={id}>{title}</LabelFilter>
     <Input
     type='text' 
     name='filter' 
     onChange={(e)=>dispatch(setFilter(e.currentTarget.value))} 
-    value={filter}
+    value={onFilter}
     id={id}
     /></>)}
 
