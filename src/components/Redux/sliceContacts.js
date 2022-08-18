@@ -25,7 +25,7 @@ const persistConfig = {
     key: 'contacts',
     storage,
     blacklist:['filter']
-}
+};
 
 export const persistSliceContacts=persistReducer(persistConfig,sliceContacts.reducer)
 
