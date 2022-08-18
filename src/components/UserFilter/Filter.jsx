@@ -6,7 +6,7 @@ import { setFilter,getFilter } from 'components/Redux/sliceContacts';
 
 export const Filter=({title,id})=>{
     const dispatch=useDispatch()
-    const onFilter=useSelector(state=>state.contacts.filter)
+    const onFilter=useSelector(getFilter)
 
     return (<><LabelFilter htmlFor={id}>{title}</LabelFilter>
     <Input
